@@ -21,7 +21,7 @@ router.get("^/$|/eShop", (req, res) => {
 router.get("/users", (req, res) => {
   try {
     const strQry = `
-            select firstName, lastName, age, emailAdd
+            select userName, userSurname, userAge, userEmail
             from Users;
             `;
     db.query(strQry, (err, results) => {
@@ -42,8 +42,8 @@ router.get("/users", (req, res) => {
 router.get("/user/:id", (req, res) => {
   try {
     const strQry = `
-              select userID, firstName, lastName, age, emailAdd
-              from Users 
+            select userName, userSurname, userAge, userEmail
+            from Users
               where userID = ${req.params.id};
               `;
     db.query(strQry, (err, results) => {
